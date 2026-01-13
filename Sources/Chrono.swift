@@ -45,7 +45,6 @@ public struct Chrono {
     /// iOS's Calender.Component to date that has 6 minutes less if the date is before 1900 (compared to JavaScript or Java)
     /// If your use case will include both be ealier than 1900 and its minutes, seconds, nanoseconds, (milliseconds)
     /// you should turn on this fix.
-    public static var sixMinutesFixBefore19001: Bool = false
     private static let sixMinutesFixBefore1900Value = LockedValue(false)
     public static var sixMinutesFixBefore1900: Bool {
         get { sixMinutesFixBefore1900Value.get() }
@@ -138,6 +137,6 @@ public struct Chrono {
         return results.first?.start.date
     }
     
-    public static let strict = Chrono(modeOption: strictModeOption())
-    public static let casual = Chrono(modeOption: casualModeOption())
+    public static var strict: Chrono { Chrono(modeOption: strictModeOption()) }
+    public static var casual: Chrono { Chrono(modeOption: casualModeOption()) }
 }
